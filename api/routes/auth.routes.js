@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const router = express.Router();
 const userSchema = require("../models/User");
+const calendarSchema = require("../models/Calendar");
 const authorize = require("../middlewares/auth");
 const { check, validationResult } = require('express-validator');
 
@@ -40,9 +41,24 @@ router.post("/register-user",
                     password: hash
                 });
                 user.save().then((response) => {
-                    res.status(201).json({
-                        message: "User successfully created!",
-                        result: response
+                    console.log(response._id)
+                    const calendar = new calendarSchema({
+                        id: response._id,
+                        classroom: {
+                            monday: [],
+                            tuesday: [],
+                            wednesday: [],
+                            thurday: [],
+                            friday: [],
+                            saterday: [],
+                            sunday: []
+                        }
+                    });
+                    calendar.save().then((resp) => {
+                        res.status(201).json({
+                            message: "User successfully created!",
+                            result: response, resp
+                        });
                     });
                 }).catch(error => {
                     res.status(500).json({
@@ -77,7 +93,7 @@ router.post("/signin", (req, res, next) => {
             email: getUser.email,
             userId: getUser._id
         }, "longer-secret-is-better", {
-            expiresIn: "1h"
+            expiresIn: "100h"
         });
         res.status(200).json({
             token: jwtToken,
