@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "name":"Maths",
+        "startTime": "9h",
+        "stopTime": "10h"
+    },
+    {
+        "id": 2,
+        "name":"Maths",
+        "startTime": "9h",
+        "stopTime": "10h"
+    }
+]
