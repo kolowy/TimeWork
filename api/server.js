@@ -20,10 +20,6 @@ mongoose.connect(dbConfig.db, {
     }
 )
 
-// Remvoe MongoDB warning error
-//mongoose.set('useCreateIndex', true);
-
-
 // Express settings
 const app = express();
 app.use(bodyParser.json());
