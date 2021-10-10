@@ -43,7 +43,7 @@ router.post("/register-user",
                 user.save().then((response) => {
                     console.log(response._id)
                     const calendar = new calendarSchema({
-                        id: response._id,
+                        userID: response.id,
                         classroom: {
                             monday: [],
                             tuesday: [],
@@ -97,7 +97,7 @@ router.post("/signin", (req, res, next) => {
         });
         res.status(200).json({
             token: jwtToken,
-            expiresIn: 3600,
+            expiresIn: 360000,
             msg: getUser
         });
     }).catch(err => {

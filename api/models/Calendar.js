@@ -13,7 +13,7 @@ const classShema = new Schema({
 
 
 let CalendarSchema = new Schema({
-    id: {
+    userID: {
         type: String,
         unique: true
     },

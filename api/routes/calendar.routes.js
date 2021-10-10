@@ -10,22 +10,21 @@ const authorize = require("../middlewares/auth");
 const { check, validationResult } = require('express-validator');
 
 
-// Get Single User
-router.route('/user-calendar/').get(authorize, (req, res, next) => {
-    userSchema.find((error, response) => {
-        if (error) {
-            return next(error)
-        } else {
-            calendarSchema.findOne({
-                id: response._id
-            }).then(response => {        
-                if (error) {
-                    return next(error)
-                } else {
-                    res.status(200).json(response)
-                }
-            })        
+//NOTE Get Single User
+router.route('/user-calendar/').get(authorize, (req, res) => {
+    console.log(req.user.userId)
+
+    calendarSchema.findOne({
+        userID: req.user.userId
+    }).then(response => {
+        if (!response) {
+            return res.status(401).json({
+                message: "Calendar failed"
+            });
         }
+        res.status(200).json({
+            response
+        });
     })
 })
 
