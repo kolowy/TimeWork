@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TimeWork</string>
+    <string name="enter_name">Nom d\'utilisateur</string>
+    <string name="enter_email">Email</string>
+    <string name="sign_up_button">Créer un compte</string>
+    <string name="sign_up_text">Vous n\'avez pas de compte ? Créez-en un</string>
+    <string name="no_account_message">Il semblerait que vous ne soyez pas connecté</string>
+    <string name="sign_in_button">Se connecter</string>
+    <string name="enter_password">Mot de passe</string>
+</resources>

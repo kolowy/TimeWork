@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TimeWork</string>
+    <string name="user_name" translatable="false">None</string>
+    <string name="user_mail" translatable="false">None</string>
+    <string name="user_pass" translatable="false">None</string>
+    <string name="enter_name">Enter username</string>
+    <string name="enter_email">Enter email</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="sign_up_text">You don\'t have an account ?\nSign Up Here</string>
+    <string name="no_account_message">Seems like you\'re not connected</string>
+    <string name="sign_in_button">Sign In</string>
+    <string name="enter_password">Enter Password</string>
+</resources>
