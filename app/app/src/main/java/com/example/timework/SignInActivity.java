@@ -35,7 +35,7 @@ public class SignInActivity extends AppCompatActivity {
                 "\",\n \"email\": \"" + mail.getText().toString() +
                 "\",\n \"password\": \"" + pass.getText().toString() + "\"\n";
 
-        text.setText(MainActivity.PostRequest("https:://localhost:4000/signin", json));
+        text.setText(MainActivity.PostRequest("https:://localhost:4000/api/signin", json));
     }
 
     /**

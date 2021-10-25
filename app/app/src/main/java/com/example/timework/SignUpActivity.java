@@ -35,6 +35,6 @@ public class SignUpActivity extends AppCompatActivity {
                 "\",\n \"email\": \"" + mail.getText().toString() +
                 "\",\n \"password\": \"" + pass.getText().toString() + "\"\n";
 
-        text.setText(MainActivity.PostRequest("https:://localhost:4000/register-user", json));
+        text.setText(MainActivity.PostRequest("https:://localhost:4000/api/register-user", json));
     }
 }
