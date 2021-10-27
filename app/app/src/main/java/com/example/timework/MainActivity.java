@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     "\",\n \"email\": \"" + getString(R.string.user_mail) +
                     "\",\n \"password\": \"" + getString(R.string.user_pass) + "\"\n";
 
-            view.setText(PostRequest("https:://localhost:4000", json));
+            view.setText(PostRequest("https://localhost:4000/api/signin", json));
         }
     }
 
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param link Url of the request
      * @param data Data of the request
-     * @return the response of the API
+     * @return the response of the API or an error message in case of failure
      */
     public static String PostRequest(String link, String data)
     {
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             url = new URL(link);
         } catch (Exception e){
-            return "Error: Invalid URL";
+            return "[Request-Error] Invalid URL (" + e.getMessage() + ")";
         }
 
         HttpURLConnection http;
@@ -79,18 +79,25 @@ public class MainActivity extends AppCompatActivity {
             http.setRequestMethod("POST");
             http.setRequestProperty("Accept", "application/json");
             http.setRequestProperty("Content-Type", "application/json");
+
+            http.connect();
         } catch (Exception e) {
-            return "Error: Connection Failed";
+            return "[Request-Error] Connection Failed (" + e.getMessage() + ")";
         }
 
         try {
             byte[] out = data.getBytes(StandardCharsets.UTF_8);
             OutputStream stream = http.getOutputStream();
             stream.write(out);
-
-            msg = http.getResponseMessage();
         } catch (Exception e) {
-            return "Error: Failed to send data";
+            return "[Request-Error] Failed to send data (" + e.getMessage() + ")";
+        }
+
+        try {
+            msg = http.getResponseMessage();
+        }
+        catch (Exception e) {
+            return "[Request-Error] Failed to retrieve data (" + e.getMessage() + ")";
         }
 
         http.disconnect();
