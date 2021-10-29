@@ -31,10 +31,11 @@ public class SignInActivity extends AppCompatActivity {
         EditText mail = findViewById(R.id.editTextTextEmailAddress);
         EditText pass = findViewById(R.id.editTextTextPassword);
 
-        String json = "[\n {\n \"name\": \"" + text.getText().toString() +
+        String json = "{\n \"name\": \"" + text.getText().toString() +
                 "\",\n \"email\": \"" + mail.getText().toString() +
-                "\",\n \"password\": \"" + pass.getText().toString() + "\"\n }\n]";
+                "\",\n \"password\": \"" + pass.getText().toString() + "\"\n }";
 
+        // Faut mettre l'ip locale pour tester
         text.setText(MainActivity.PostRequest("http://localhost:4000/api/signin", json));
     }
 
